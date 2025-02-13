@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <h2>To DO List</h2>
+        
+        <input type="text" id="taskinput" placeholder="Add a new Task">
+        <button onclick="addtask()">Add</button>
+        <br><br>
+        <ul id="Tasklist"></ul>
+    </div>
+    <script>
+        function addtask()
+        {
+       let input = document.getElementById("taskinput");
+       console.log("clicked")
+       let Tasktext=input.value.trim();
+       if(Tasktext ==="") return;
+
+       let li=document.createElement('li');
+       li.innerHTML=`${Tasktext}<button onclick="removeTask(this)">X</button>`;
+       li.addEventListener("click", function() {
+    this.classList.toggle("completed"); // Corrected 'classList' spelling
+});
+
+
+       document.getElementById("Tasklist").appendChild(li);
+        
+       }
+       function removeTask(button){
+            button.parentElement.remove();
+       }
+    </script>
+</body>
+</html>
